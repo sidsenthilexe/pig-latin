@@ -30,5 +30,4 @@ def main():
         final_sentence.insert(array_var, word_output)
     final_sentence_assembled = ' '.join(final_sentence)
     print(final_sentence_assembled)
-
 main()
