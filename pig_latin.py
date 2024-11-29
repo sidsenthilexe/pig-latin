@@ -13,14 +13,13 @@ def main():
                 if word_term_index == 0:
                     word_assembled = ''.join(word_broken)
                     word_output=word_assembled+"way"
-                    break
                 else:
                     sentence_save = word_broken[0:word_term_index]
                     del word_broken[0:word_term_index]
                     save_assembled = ''.join(sentence_save)
                     word_assembled = ''.join (word_broken)
                     word_output = word_assembled+save_assembled+"ay"
-                    break
+                break
         final_sentence.insert(array_var, word_output)
         
     final_sentence_assembled = ' '.join(final_sentence)
