@@ -7,6 +7,6 @@
 * Words beginning with vowel: add ay to end
 
 # Required Packages:
-* Tkinter: `` `pip install tk` ``
-* Sun Valley ttk theme `` `pip install sv-ttk` ``
-* Darkdetect `` `pip install darkdetect` ``
+* Tkinter: `` pip install tk ``
+* Sun Valley ttk theme `` pip install sv-ttk ``
+* Darkdetect `` pip install darkdetect ``
