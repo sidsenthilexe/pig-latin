@@ -1,5 +1,21 @@
+import tkinter
+from tkinter import ttk
+
+import sv_ttk
+import darkdetect
+
+root = tkinter.Tk()
+root.geometry("600x400")
+root.resizable(False, False)
+root.title("Pig Latin Translator")
+
+sentence_input_stringvar = tkinter.StringVar()
+sentence_input = ''
+
 def main():
-    sentence_input = input('Input your sentence: ')
+    sentence_input_stringvar.get()
+    sentence_input = sentence_input_stringvar
+    print(sentence_input)
     sentence_split = sentence_input.split()
     final_sentence = []
     array_var = -1
@@ -26,4 +42,15 @@ def main():
     final_sentence_assembled = final_sentence_assembled.lower()
     print("this sentence in Pig Latin is: " + final_sentence_assembled)
 
-main()
+sentence_input_label = ttk.Label(root, text="Enter the text to be translated:")
+sentence_input_label.pack(side=tkinter.TOP, pady = 10)
+
+sentence_input_entry = ttk.Entry(root, textvariable=sentence_input_stringvar)
+sentence_input_entry.pack(side=tkinter.TOP, pady = 10)
+sentence_input_entry.focus()
+
+enter_button = ttk.Button(root, text="Go!", command=main)
+enter_button.pack(side=tkinter.TOP, pady = 10)
+
+sv_ttk.set_theme(darkdetect.theme())
+root.mainloop()
