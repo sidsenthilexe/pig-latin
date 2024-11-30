@@ -1,10 +1,14 @@
 # pig-latin
-* Translate a string into pig latin
+* Translate a string into Pig Latin.
+* Program can be run on its own as long as the required packages are installed.
 
-# Rules:
-* Words beginning with 1 consonant: move consonant to end of word, add ay to end
-* Words beginning with consonant cluster: move cluster to end, add ay to end
-* Words beginning with vowel: add ay to end
+# Rules of Pig Latin:
+* Words beginning with consonants: All consonants ahead of the first vowel are moved to the end and "ay" is added
+* Words beginning with vowel: Add "way" to end
+* Examples:
+    * latin -> atinlay
+    * friends -> iendsfray
+    * eat -> eatway
 
 # Required Packages:
 * Tkinter: `` pip install tk ``
