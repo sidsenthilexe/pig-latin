@@ -14,7 +14,6 @@ sentence_input = ''
 
 def main():
     sentence_input = sentence_input_stringvar.get()
-    print(sentence_input)
     sentence_split = sentence_input.split()
     final_sentence = []
     array_var = -1
@@ -39,9 +38,8 @@ def main():
         
     final_sentence_assembled = ' '.join(final_sentence)
     final_sentence_assembled = final_sentence_assembled.lower()
-    print("this sentence in Pig Latin is: " + final_sentence_assembled)
     final_sentence_label = ttk.Label(root, text=f"This sentence in Pig Latin is: " + final_sentence_assembled)
-    final_sentence_label.pack(side=tkinter.TOP, pady = 10)
+    final_sentence_label.pack(side=tkinter.TOP, pady = 25)
 
 sentence_input_label = ttk.Label(root, text="Enter the text to be translated:")
 sentence_input_label.pack(side=tkinter.TOP, pady = 10)
