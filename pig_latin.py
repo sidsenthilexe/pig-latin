@@ -5,12 +5,13 @@ import sv_ttk
 import darkdetect
 
 from gtts import gTTS
+from playsound import playsound
 import os
 
 language = 'en'
 
 root = tkinter.Tk()
-root.geometry("400x300")
+root.geometry("400x350")
 root.resizable(False, True)
 root.title("Pig Latin Translator")
 
@@ -25,9 +26,11 @@ def copy_clipboard():
 
 def play_audio():
     global final_sentence_assembled
+    if os.path.exists('speak.mp3'):
+        os.remove('speak.mp3')
     audio_object = gTTS(text=final_sentence_assembled, lang=language, slow=False)
-    audio_object.save("speak.mp3")
-    os.system("start speak.mp3")
+    audio_object.save('speak.mp3')
+    playsound('speak.mp3', block=True)
 
 def main():
     global final_sentence_assembled
@@ -78,4 +81,5 @@ enter_button = ttk.Button(root, text="Go!", command=main)
 enter_button.pack(side=tkinter.TOP, pady = 10)
 
 sv_ttk.set_theme(darkdetect.theme())
+
 root.mainloop()

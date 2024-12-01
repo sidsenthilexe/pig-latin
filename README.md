@@ -14,4 +14,6 @@
 * Tkinter: `` pip install tk ``
 * Sun Valley ttk theme `` pip install sv-ttk ``
 * gTTS `` pip install gTTS``
+* Wheel `` pip install wheel``
+* Playsound `` pip install playsound ``
 * Darkdetect `` pip install darkdetect ``
