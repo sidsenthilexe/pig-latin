@@ -42,18 +42,23 @@ def main():
     for term in sentence_split:
         array_var += 1
         word_broken = list(term)
+        
         for word_term in word_broken:
+            
             if word_term in ['a', 'e', 'i', 'o', 'u']:
                 word_term_index = word_broken.index(word_term)
+                
                 if word_term_index == 0:
                     word_assembled = ''.join(word_broken)
                     word_output=word_assembled+"way"
+                    
                 else:
                     sentence_save = word_broken[0:word_term_index]
                     del word_broken[0:word_term_index]
                     save_assembled = ''.join(sentence_save)
                     word_assembled = ''.join (word_broken)
                     word_output = word_assembled+save_assembled+"ay"
+                    
                 break
         final_sentence.insert(array_var, word_output)
         
@@ -67,8 +72,6 @@ def main():
     
     play_audio_button = ttk.Button(root, text="Speak", command=play_audio)
     play_audio_button.pack(side=tkinter.TOP, pady=10)
-    
-
 
 sentence_input_label = ttk.Label(root, text="Enter the text to be translated:")
 sentence_input_label.pack(side=tkinter.TOP, pady = 10)
