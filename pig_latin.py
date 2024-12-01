@@ -4,20 +4,33 @@ from tkinter import ttk
 import sv_ttk
 import darkdetect
 
+from gtts import gTTS
+import os
+
+language = 'en'
+
 root = tkinter.Tk()
 root.geometry("400x300")
-root.resizable(False, False)
+root.resizable(False, True)
 root.title("Pig Latin Translator")
 
 sentence_input_stringvar = tkinter.StringVar()
 sentence_input = ''
-final_sentence_assembled = ''
+global final_sentence_assembled
 
-def copy_clipboard(final_sentence_clip):
+def copy_clipboard():
+    global final_sentence_assembled
     root.clipboard_clear()
-    root.clipboard_append(final_sentence_clip)
+    root.clipboard_append(final_sentence_assembled)
+
+def play_audio():
+    global final_sentence_assembled
+    audio_object = gTTS(text=final_sentence_assembled, lang=language, slow=False)
+    audio_object.save("speak.mp3")
+    os.system("start speak.mp3")
 
 def main():
+    global final_sentence_assembled
     sentence_input = sentence_input_stringvar.get()
     sentence_split = sentence_input.split()
     final_sentence = []
@@ -45,10 +58,12 @@ def main():
     final_sentence_assembled = final_sentence_assembled.lower()
     final_sentence_label = ttk.Label(root, text=f"This sentence in Pig Latin is: " + final_sentence_assembled, wraplength=350)
     final_sentence_label.pack(side=tkinter.TOP, pady = 10)
-    
-    root.clipboard_clear()
-    copy_text_button = ttk.Button(root, text="Copy", command=copy_clipboard(final_sentence_assembled))
+
+    copy_text_button = ttk.Button(root, text="Copy", command=copy_clipboard)
     copy_text_button.pack(side=tkinter.TOP, pady=10)
+    
+    play_audio_button = ttk.Button(root, text="Speak", command=play_audio)
+    play_audio_button.pack(side=tkinter.TOP, pady=10)
     
 
 

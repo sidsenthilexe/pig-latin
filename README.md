@@ -13,4 +13,5 @@
 # Required Packages:
 * Tkinter: `` pip install tk ``
 * Sun Valley ttk theme `` pip install sv-ttk ``
+* gTTS `` pip install gTTS``
 * Darkdetect `` pip install darkdetect ``
