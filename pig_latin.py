@@ -11,6 +11,11 @@ root.title("Pig Latin Translator")
 
 sentence_input_stringvar = tkinter.StringVar()
 sentence_input = ''
+final_sentence_assembled = ''
+
+def copy_clipboard(final_sentence_clip):
+    root.clipboard_clear()
+    root.clipboard_append(final_sentence_clip)
 
 def main():
     sentence_input = sentence_input_stringvar.get()
@@ -38,8 +43,14 @@ def main():
         
     final_sentence_assembled = ' '.join(final_sentence)
     final_sentence_assembled = final_sentence_assembled.lower()
-    final_sentence_label = ttk.Label(root, text=f"This sentence in Pig Latin is: " + final_sentence_assembled)
-    final_sentence_label.pack(side=tkinter.TOP, pady = 25)
+    final_sentence_label = ttk.Label(root, text=f"This sentence in Pig Latin is: " + final_sentence_assembled, wraplength=350)
+    final_sentence_label.pack(side=tkinter.TOP, pady = 10)
+    
+    root.clipboard_clear()
+    copy_text_button = ttk.Button(root, text="Copy", command=copy_clipboard(final_sentence_assembled))
+    copy_text_button.pack(side=tkinter.TOP, pady=10)
+    
+
 
 sentence_input_label = ttk.Label(root, text="Enter the text to be translated:")
 sentence_input_label.pack(side=tkinter.TOP, pady = 10)
