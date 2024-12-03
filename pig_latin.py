@@ -8,6 +8,9 @@ from gtts import gTTS
 from playsound import playsound
 import os
 
+
+from dotenv import load_dotenv
+
 language = 'en'
 
 root = tkinter.Tk()
