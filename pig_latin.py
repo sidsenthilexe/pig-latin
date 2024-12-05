@@ -141,6 +141,6 @@ enter_button.pack(side=tkinter.TOP, pady = 10)
 ai_button = ttk.Button(root, text="Pig Latin AI", command=ai)
 ai_button.pack(side=tkinter.TOP, pady=10)
 
-#sv_ttk.set_theme(darkdetect.theme())
+sv_ttk.set_theme(darkdetect.theme())
 
 root.mainloop()
