@@ -8,10 +8,17 @@ from gtts import gTTS
 from playsound import playsound
 import os
 
-
 from dotenv import load_dotenv
+import anthropic
 
 language = 'en'
+
+load_dotenv()
+API_KEY = os.getenv('CLAUDE_API_KEY')
+
+client = anthropic.Anthropic(
+    api_key = API_KEY
+)
 
 root = tkinter.Tk()
 root.geometry("400x350")
@@ -34,6 +41,18 @@ def play_audio():
     audio_object = gTTS(text=final_sentence_assembled, lang=language, slow=False)
     audio_object.save('speak.mp3')
     playsound('speak.mp3', block=True)
+    
+def ai():
+    global final_sentence_assembled
+    ai_sentence_input = sentence_input_stringvar.get()
+    ai_message = client.messages.create(
+        model="claude-3-5-sonnet-20241022",
+        max_tokens=1024,
+        messages=[
+            {"role": "user", "content": ai_sentence_input}
+        ]
+    )
+    sentence_input = ai_message
 
 def main():
     global final_sentence_assembled
@@ -85,6 +104,9 @@ sentence_input_entry.focus()
 
 enter_button = ttk.Button(root, text="Go!", command=main)
 enter_button.pack(side=tkinter.TOP, pady = 10)
+
+ai_button = ttk.Button(root, text="Pig Latin AI", command=ai)
+ai_button.pack(side=tkinter.Top, pady=10)
 
 sv_ttk.set_theme(darkdetect.theme())
 
