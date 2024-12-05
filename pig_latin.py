@@ -1,6 +1,5 @@
 import tkinter
 from tkinter import ttk
-
 import sv_ttk
 import darkdetect
 
@@ -26,13 +25,16 @@ root.resizable(False, True)
 root.title("Pig Latin Translator")
 
 sentence_input_stringvar = tkinter.StringVar()
-sentence_input = ''
 global final_sentence_assembled
+global sentence_input
+sentence_input = ''
+
 
 def copy_clipboard():
     global final_sentence_assembled
     root.clipboard_clear()
     root.clipboard_append(final_sentence_assembled)
+
 
 def play_audio():
     global final_sentence_assembled
@@ -42,8 +44,9 @@ def play_audio():
     audio_object.save('speak.mp3')
     playsound('speak.mp3', block=True)
     
+
 def ai():
-    global final_sentence_assembled
+    global sentence_input
     ai_sentence_input = sentence_input_stringvar.get()
     ai_message = client.messages.create(
         model="claude-3-5-sonnet-20241022",
@@ -53,10 +56,19 @@ def ai():
         ]
     )
     sentence_input = ai_message
+    main()
+
+
+def translate():
+    global sentence_input
+    sentence_input = sentence_input_stringvar.get()
+    main()
+
 
 def main():
     global final_sentence_assembled
-    sentence_input = sentence_input_stringvar.get()
+    global sentence_input
+    
     sentence_split = sentence_input.split()
     final_sentence = []
     array_var = -1
@@ -95,6 +107,7 @@ def main():
     play_audio_button = ttk.Button(root, text="Speak", command=play_audio)
     play_audio_button.pack(side=tkinter.TOP, pady=10)
 
+
 sentence_input_label = ttk.Label(root, text="Enter the text to be translated:")
 sentence_input_label.pack(side=tkinter.TOP, pady = 10)
 
@@ -106,8 +119,8 @@ enter_button = ttk.Button(root, text="Go!", command=main)
 enter_button.pack(side=tkinter.TOP, pady = 10)
 
 ai_button = ttk.Button(root, text="Pig Latin AI", command=ai)
-ai_button.pack(side=tkinter.Top, pady=10)
+ai_button.pack(side=tkinter.TOP, pady=10)
 
-sv_ttk.set_theme(darkdetect.theme())
+#sv_ttk.set_theme(darkdetect.theme())
 
 root.mainloop()
