@@ -15,5 +15,5 @@
 * Sun Valley ttk theme `` pip install sv-ttk ``
 * gTTS `` pip install gTTS``
 * Wheel `` pip install wheel``
-* Playsound `` pip install playsound ``
+* Playsound 1.2.2 `` pip install playsound==1.2.2 ``
 * Darkdetect `` pip install darkdetect ``

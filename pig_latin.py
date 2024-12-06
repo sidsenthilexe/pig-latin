@@ -48,7 +48,7 @@ def play_audio():
         os.remove('speak.mp3')
     audio_object = gTTS(text=final_sentence_assembled, lang=language, slow=False)
     audio_object.save('speak.mp3')
-    playsound('speak.mp3', block=True)
+    playsound('speak.mp3')
     
 
 # function to use user input as the ai prompt, then translate to pig latin
@@ -128,7 +128,7 @@ sentence_input_entry = ttk.Entry(root, textvariable=sentence_input_stringvar)
 sentence_input_entry.pack(side=tkinter.TOP, pady = 10)
 sentence_input_entry.focus()
 
-enter_button = ttk.Button(root, text="Translate", command=main)
+enter_button = ttk.Button(root, text="Translate", command=translate)
 enter_button.pack(side=tkinter.TOP, pady = 10)
 
 # ai_button = ttk.Button(root, text="Pig Latin AI", command=ai)
