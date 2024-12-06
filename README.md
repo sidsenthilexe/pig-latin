@@ -1,6 +1,6 @@
 # pig-latin
-* Translate a string into Pig Latin.
-* Program can be run on its own as long as the required packages are installed.
+* Simple app to translate a string into Pig Latin.
+* Program can be run on its own as long as the required packages are installed (see below).
 
 # Rules of Pig Latin:
 * Words beginning with consonants: All consonants ahead of the first vowel are moved to the end and "ay" is added
