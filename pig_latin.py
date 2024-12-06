@@ -11,17 +11,15 @@ from playsound import playsound
 # import modules for ai and api key
 import os
 from dotenv import load_dotenv
-import anthropic
+# from transformers import pipeline
 
 language = 'en'
 
-# set up anthropic ai
+# set up ai
 load_dotenv()
 API_KEY = os.getenv('ENV_API_KEY')
 
-client = anthropic.Anthropic(
-    api_key = API_KEY
-)
+# question_answerer = pipeline(task="question-answering")
 
 # set up root window
 root = tkinter.Tk()
@@ -54,18 +52,13 @@ def play_audio():
     
 
 # function to use user input as the ai prompt, then translate to pig latin
-def ai():
-    global sentence_input
-    ai_sentence_input = sentence_input_stringvar.get()
-    ai_message = client.messages.create(
-        model="claude-3-5-sonnet-20241022",
-        max_tokens=1024,
-        messages=[
-            {"role": "user", "content": ai_sentence_input}
-        ]
-    )
-    sentence_input = ai_message
-    main()
+# def ai():
+#     global sentence_input
+#     question = sentence_input
+#     generated_text = question_answerer(question)
+#     sentence_input = generated_text
+#     print(generated_text)
+#     # main()
     
 
 # function to directly go to translation
@@ -138,8 +131,8 @@ sentence_input_entry.focus()
 enter_button = ttk.Button(root, text="Translate", command=main)
 enter_button.pack(side=tkinter.TOP, pady = 10)
 
-ai_button = ttk.Button(root, text="Pig Latin AI", command=ai)
-ai_button.pack(side=tkinter.TOP, pady=10)
+# ai_button = ttk.Button(root, text="Pig Latin AI", command=ai)
+# ai_button.pack(side=tkinter.TOP, pady=10)
 
 sv_ttk.set_theme(darkdetect.theme())
 
