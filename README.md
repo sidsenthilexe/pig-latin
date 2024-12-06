@@ -17,5 +17,3 @@
 * Wheel `` pip install wheel``
 * Playsound `` pip install playsound ``
 * Darkdetect `` pip install darkdetect ``
-
-Google ai??
